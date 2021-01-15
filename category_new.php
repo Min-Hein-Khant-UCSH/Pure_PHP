@@ -4,7 +4,7 @@ require 'backendheader.php';
 ?>
 <div class="app-title">
                 <div>
-                    <h1> <i class="icofont-list"></i> Category Form </h1>
+                    <h1> <i class="icofont-list"></i>Create Category Form </h1>
                 </div>
                 <ul class="app-breadcrumb breadcrumb side">
                     <a href="category_list.php" class="btn btn-outline-primary">
@@ -16,7 +16,8 @@ require 'backendheader.php';
                 <div class="col-md-12">
                     <div class="tile">
                         <div class="tile-body">
-                            <form method="post" action="">
+
+                                <form method="post" action="category_add.php" enctype="multipart/form-data">
 
                                 <div class="form-group row">
                                     <label for="name_id" class="col-sm-2 col-form-label"> Name </label>
@@ -34,7 +35,7 @@ require 'backendheader.php';
 
                                 <div class="form-group row">
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-primary" name="btn">
                                             <i class="icofont-save"></i>
                                             Save
                                         </button>

@@ -13,7 +13,55 @@ require 'dbconnect.php';
                     </a>
                 </ul>
             </div>
-            <div class="row">
+<?php
+
+if (isset($_GET['create'])) {
+
+	?>
+	<div class="alert alert-success alert-dismissible fade show text-center">
+													                                                <strong>Successful Created</strong>
+													                                                    <button class="close" data-dismiss="alert">&times;</button>
+													                                                </div>
+
+
+	<?php
+
+}
+
+?>
+<?php
+
+if (isset($_GET['update'])) {
+
+	?>
+	<div class="alert alert-warning alert-dismissible fade show text-center">
+										                                                            <strong>Successful Updated</strong>
+										                                                                <button class="close" data-dismiss="alert">&times;</button>
+										                                                            </div>
+
+
+	<?php
+
+}
+
+?>
+<?php
+
+if (isset($_GET['delete'])) {
+
+	?>
+	<div class="alert alert-danger alert-dismissible fade show text-center">
+		                                                                                            <strong>Successful Deleted</strong>
+		                                                                                                <button class="close" data-dismiss="alert">&times;</button>
+		                                                                                            </div>
+
+
+	<?php
+
+}
+
+?>
+<div class="row">
                 <div class="col-md-12">
                     <div class="tile">
                         <div class="tile-body">
@@ -23,6 +71,7 @@ require 'dbconnect.php';
                                         <tr>
                                           <th>No</th>
                                           <th>Name</th>
+                                          <th>Photo</th>
                                           <th>Action</th>
                                         </tr>
                                     </thead>
@@ -40,20 +89,25 @@ foreach ($row as $r) {
 	?>
 
 
-			<tr>
-			                                            <td> <?php echo $i++;?></td>
-			                                            <td> <?=$r['name']?></td>
-			                                            <td>
-			                                                <a href="" class="btn btn-warning">
-			                                                    <i class="icofont-ui-settings"></i>
-			                                                </a>
+																		<tr>
+																		                                            <td> <?php echo $i++;?></td>
+																		                                            <td> <?=$r['name']?></td>
+														                                                            <td><img src="<?=$r['logo']?>" alt="" width="100px"></td>
+																		                                            <td>
+																		                                                <a href="category_edit.php?id=<?=$r['id']?>" class="btn btn-warning">
+																		                                                    <i class="icofont-ui-settings"></i>
+																		                                                </a>
 
-			                                                <a href="" class="btn btn-outline-danger">
-			                                                    <i class="icofont-close"></i>
-			                                                </a>
-			                                            </td>
+																		                                                <form action="category_delete.php" method="post" class="d-inline-block" onsubmit="return confirm('Are you sure you want to delete?')">
 
-			                                        </tr>
+			                                                                                                                <input type="hidden" value="<?=$r['id']?>" name="id">
+									                                                                                          <button class="btn btn-outline-danger"><i class="icofont-close"></i></button>
+
+
+									                                                                                    </form>
+																		                                            </td>
+
+																		                                        </tr>
 
 	<?php
 

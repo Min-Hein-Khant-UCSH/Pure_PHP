@@ -1,9 +1,17 @@
 <?php
 require ('backendheader.php');
+require 'dbconnect.php';
+
+$sql  = "select * from categories";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$row = $stmt->fetchAll();
+
+// var_dump($row);
 ?>
 <div class="app-title">
         <div>
-            <h1> <i class="icofont-list"></i> Subategory Form </h1>
+            <h1> <i class="icofont-list"></i>Create Subategory Form </h1>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
             <a href="subcategory_list.php" class="btn btn-outline-primary">
@@ -21,7 +29,7 @@ require ('backendheader.php');
                         <div class="form-group row">
                             <label for="name_id" class="col-sm-2 col-form-label"> Name </label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="name_id" name="name">
+                              <input type="text" class="form-control" id="name_id" name="name" required="">
                             </div>
                         </div>
 
@@ -30,12 +38,19 @@ require ('backendheader.php');
                             <div class="col-sm-10">
                                 <select class="form-control" name="categoryid">
 
+<?php
+foreach ($row as $r) {
+	?>
 
 
-	                               <option value=""></option>
+			                                        <option value="<?=$r['id']?>"><?=$r['name']?></option>
 
+	<?php
 
-                                </select>
+}
+
+?>
+</select>
                             </div>
                         </div>
 

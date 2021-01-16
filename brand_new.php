@@ -3,7 +3,7 @@ require ('backendheader.php');
 ?>
 <div class="app-title">
         <div>
-            <h1> <i class="icofont-list"></i> Brand Form </h1>
+            <h1> <i class="icofont-list"></i>Create Brand Form </h1>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
             <a href="brand_list.php" class="btn btn-outline-primary">
@@ -21,14 +21,14 @@ require ('backendheader.php');
                         <div class="form-group row">
                             <label for="name_id" class="col-sm-2 col-form-label"> Name </label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="name_id" name="name">
+                              <input type="text" class="form-control" id="name_id" name="name" required="">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="photo_id" class="col-sm-2 col-form-label"> Photo </label>
                             <div class="col-sm-10">
-                              <input type="file" id="photo_id" name="photo">
+                              <input type="file" id="photo_id" name="photo" required="">
                             </div>
                         </div>
 

@@ -26,9 +26,9 @@ if (isset($_GET['create'])) {
 
 	?>
 	<div class="alert alert-success alert-dismissible fade show text-center">
-																														                                                <strong>Successful Created</strong>
-																														                                                    <button class="close" data-dismiss="alert">&times;</button>
-																														                                                </div>
+																															                                                <strong>Successfully Created</strong>
+																															                                                    <button class="close" data-dismiss="alert">&times;</button>
+																															                                                </div>
 
 
 	<?php
@@ -42,9 +42,9 @@ if (isset($_GET['update'])) {
 
 	?>
 	<div class="alert alert-warning alert-dismissible fade show text-center">
-																														                                                <strong>Successful Created</strong>
-																														                                                    <button class="close" data-dismiss="alert">&times;</button>
-																														                                                </div>
+																															                                                <strong>Successfully Updated</strong>
+																															                                                    <button class="close" data-dismiss="alert">&times;</button>
+																															                                                </div>
 
 
 	<?php
@@ -58,9 +58,9 @@ if (isset($_GET['delete'])) {
 
 	?>
 	<div class="alert alert-danger alert-dismissible fade show text-center">
-																														                                                <strong>Successful Deleted</strong>
-																														                                                    <button class="close" data-dismiss="alert">&times;</button>
-																														                                                </div>
+																															                                                <strong>Successfully Deleted</strong>
+																															                                                    <button class="close" data-dismiss="alert">&times;</button>
+																															                                                </div>
 
 
 	<?php
@@ -90,25 +90,25 @@ foreach ($row as $r) {
 
 	?>
 
-																	                        		<tr>
-																		                                <td><?=$i++?></td>
-																		                                <td><?=$r['name']?></td>
-																		                                <td><?=$r['cname']?></td>
-																		                                <td>
-																		                                    <a href="subcategory_edit.php?id=<?=$r['id']?>" class="btn btn-warning">
-																		                                        <i class="icofont-ui-settings"></i>
-																		                                    </a>
+																		                        		<tr>
+																			                                <td><?=$i++?></td>
+																			                                <td><?=$r['name']?></td>
+																			                                <td><?=$r['cname']?></td>
+																			                                <td>
+																			                                    <a href="subcategory_edit.php?id=<?=$r['id']?>" class="btn btn-warning">
+																			                                        <i class="icofont-ui-settings"></i>
+																			                                    </a>
 
-																		                                    <form class="d-inline-block" " method="POST" action="subcategory_delete.php" onsubmit="return confirm('Are you sure you want to delete (<?=$r['name']?>) ?')">
-																		                                    	<input type="hidden" name="id" value="<?=$r['id']?>">
-																		                                    	<button class="btn btn-outline-danger">
-																		                                    		<i class="icofont-close"></i>
-																		                                    	</button>
+																			                                    <form class="d-inline-block" " method="POST" action="subcategory_delete.php" onsubmit="return confirm('Are you sure you want to delete (<?=$r['name']?>) ?')">
+																			                                    	<input type="hidden" name="id" value="<?=$r['id']?>">
+																			                                    	<button class="btn btn-outline-danger">
+																			                                    		<i class="icofont-close"></i>
+																			                                    	</button>
 
-																		                                    </form>
-																		                                </td>
+																			                                    </form>
+																			                                </td>
 
-																		                        	</tr>
+																			                        	</tr>
 
 
 

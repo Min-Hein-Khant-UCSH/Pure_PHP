@@ -1,6 +1,7 @@
 <?php
-require 'dbconnect.php';
 
+require 'dbconnect.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -79,7 +80,7 @@ require 'dbconnect.php';
 						</div>
 					</div>
 					<div class="col-lg-4 col-10">
-						<a href="" class="d-xl-block d-lg-block d-md-block d-none  text-decoration-none loginLink float-right"> Login | Sign-up </a>
+						<a href="login.php" class="d-xl-block d-lg-block d-md-block d-none  text-decoration-none loginLink float-right"> Login | Sign-up </a>
 
 
 					</div>
@@ -94,10 +95,10 @@ require 'dbconnect.php';
 					<i class="icofont-search"></i>
 				</div>
 
-				<a href="" class="text-decoration-none d-xl-inline d-lg-inline d-md-inline d-sm-none d-none shoppingcartLink">
+				<a href="shoppingcart.php" class="text-decoration-none d-xl-inline d-lg-inline d-md-inline d-sm-none d-none shoppingcartLink">
 					<i class="icofont-shopping-cart"></i>
-					<span class="badge badge-pill badge-light badge-notify cartNotistyle cartNoti"> 1 </span>
-					<span> 4,800 Ks </span>
+					<span class="badge badge-pill badge-light badge-notify cartNotistyle cartNoti count"> 0 </span>
+					<span class="cartTotal"></span>
 				</a>
 
 				<a href="" class="text-decoration-none d-xl-none d-lg-none d-md-none d-sm-inline-block d-inline-block shoppingcartLink">
@@ -136,12 +137,12 @@ $row = $stmt->fetchAll();
 foreach ($row as $r) {
 	?>
 	<li class="dropdown-submenu">
-																			          		<a class="dropdown-item" href="javascript:void(0)">
+																											          		<a class="dropdown-item" href="javascript:void(0)">
 	<?=$r['name']?>
 	<i class="icofont-rounded-right float-right"></i>
-																			          		</a>
-																				            <ul class="dropdown-menu">
-																				            	<h6 class="dropdown-header">
+																											          		</a>
+																												            <ul class="dropdown-menu">
+																												            	<h6 class="dropdown-header">
 
 	<?=$r['name']?>
 	</h6>
@@ -155,7 +156,7 @@ foreach ($row as $r) {
 
 	foreach ($rows as $r) {
 		?>
-																																		<li><a class="dropdown-item" href="#"><?=$r['name']?></a></li>
+																																																		<li><a class="dropdown-item" href="#"><?=$r['name']?></a></li>
 
 
 		<?php
@@ -163,8 +164,8 @@ foreach ($row as $r) {
 
 	?>
 	</ul>
-																			          	</li>
-																			          	<div class="dropdown-divider"></div>
+																											          	</li>
+																											          	<div class="dropdown-divider"></div>
 
 
 
@@ -206,8 +207,8 @@ foreach ($row as $r) {
 	?>
 
 
-					<a class="dropdown-item" href="#"><?=$r['name']?></a>
-					            			<div class="dropdown-divider"></div>
+													<a class="dropdown-item" href="#"><?=$r['name']?></a>
+													            			<div class="dropdown-divider"></div>
 
 	<?php
 
@@ -281,13 +282,13 @@ $stmt->execute();
 $row = $stmt->fetchAll();
 foreach ($row as $r) {
 	?>
-									<a data-toggle="collapse" href="#category_<?=$r['id']?>" role="button" aria-expanded="false" aria-controls="category">
+																	<a data-toggle="collapse" href="#category_<?=$r['id']?>" role="button" aria-expanded="false" aria-controls="category">
 	<?=$r['name']?>
-								<i class="icofont-rounded-down float-right mr-3"></i>
+																<i class="icofont-rounded-down float-right mr-3"></i>
 
-												  	</a>
+																				  	</a>
 
-													<div class="collapse sidebardropdown_container_category mt-3" id="category_<?=$r['id']?>">
+																					<div class="collapse sidebardropdown_container_category mt-3" id="category_<?=$r['id']?>">
 	<?php
 
 	$sql  = "select * from subcategories where category_id=?";
@@ -297,7 +298,7 @@ foreach ($row as $r) {
 	foreach ($rows as $r) {
 		?>
 
-																		 <a href="" class="py-2"><?=$r['name']?></a>
+																																		 <a href="" class="py-2"><?=$r['name']?></a>
 
 
 		<?php
@@ -310,7 +311,7 @@ foreach ($row as $r) {
 
 
 
-													<hr>
+																					<hr>
 
 
 	<?php
@@ -339,7 +340,7 @@ foreach ($row as $r) {
 
 	?>
 
-				 <a href="" class="py-2"> <?=$r['name']?></a>
+												 <a href="" class="py-2"> <?=$r['name']?></a>
 
 
 
@@ -363,10 +364,10 @@ foreach ($row as $r) {
 			</div>
 			<hr>
 
-			<a href="#"> Login | Signup</a>
+			<a href="login.php"> Login | Signup</a>
 			<hr>
 
-			<a href="#"> Cart [ <span class="cartNoti"> 1 </span> ]  </a>
+			<a href="shoppingcart.php"> Cart [ <span class="cartNoti"> 1 </span> ]  </a>
 			<hr>
 
 			<img src="frontend/image/download.png" class="img-fluid ml-2 text-center" style="width: 150px">

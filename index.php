@@ -41,14 +41,14 @@ foreach ($row as $r) {
 
 
 
-																																					<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 ">
-																																									<div class="card categoryCard border-0 shadow-sm p-3 mb-5 rounded text-center">
-																																									  	<img src="<?=$r['logo']?>" class="img-fluid card-img-top" alt="...">
-																																									  	<div class="card-body">
-																																									    	<p class="card-text font-weight-bold text-truncate"> <?=$r['name']?></p>
-																																									  	</div>
-																																									</div>
-																																								</div>
+																																																	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 ">
+																																																					<div class="card categoryCard border-0 shadow-sm p-3 mb-5 rounded text-center">
+																																																					  	<img src="<?=$r['logo']?>" class="img-fluid card-img-top" alt="...">
+																																																					  	<div class="card-body">
+																																																					    	<p class="card-text font-weight-bold text-truncate"> <?=$r['name']?></p>
+																																																					  	</div>
+																																																					</div>
+																																																				</div>
 
 
 
@@ -80,29 +80,33 @@ $stmt->execute();
 $row = $stmt->fetchAll();
 foreach ($row as $r) {
 	?>
-																								<div class="item">
-																										                    <div class="pad15">
-																										                    	<img src="<?=$r['photo']?>" class="img-fluid">
-																										                        <p class="text-truncate"><?=$r['name']?></p>
-																										                        <p class="item-price">
-																										                        	<strike><?=$r['discount']?>&nbsp;Kyats</strike>
-																										                        	<span class="d-block"><?=$r['price']?>&nbsp;Kyats</span>
-																										                        </p>
+																																				<div class="item">
+																																						                    <div class="pad15">
+																																						                    	<img src="<?=$r['photo']?>" class="img-fluid">
+																																						                        <p class="text-truncate"><?=$r['name']?></p>
+																																						                        <p class="item-price">
+																																						                        	<strike><?=$r['price']?>&nbsp;Kyats</strike>
+																																						                        	<span class="d-block"><?=$r['discount']?>&nbsp;Kyats</span>
+																																						                        </p>
 
-																										                        <div class="star-rating">
-																																	<ul class="list-inline">
-																																		<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
-																																		<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
-																																		<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
-																																		<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
-																																		<li class="list-inline-item"><i class='bx bxs-star-half' ></i></li>
-																																	</ul>
-																																</div>
+																																						                        <div class="star-rating">
+																																													<ul class="list-inline">
+																																														<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+																																														<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+																																														<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+																																														<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+																																														<li class="list-inline-item"><i class='bx bxs-star-half' ></i></li>
+																																													</ul>
+																																												</div>
 
-																																<a href="#" class="addtocartBtn text-decoration-none">Add to Cart</a>
+																																																																															<a href="javascript:void(0)" class="addtocartBtn text-decoration-none" data-id ="<?=$r['id']?>" data-name="<?=$r['name']?>"
+																																																		data-codeno="<?=$r['codeno']?>"
+																																																		data-photo="<?=$r['photo']?>"
+																																																		data-price="<?=$r['price']?>"
+																																																		data-discount="<?=$r['discount']?>">Add to Cart</a>
 
-																										                    </div>
-																										                </div>
+																																						                    </div>
+																																						                </div>
 
 
 	<?php
@@ -139,39 +143,41 @@ $row = $stmt->fetchAll();
 
 foreach ($row as $r) {
 	?>
-							<div class="item">
-							<div class="pad15">
-									                    	<img src="<?=$r['photo']?>" class="img-fluid">
-									                        <p class="text-truncate"><?=$r['name']?></p>
-									                        <p class="item-price">
+																			<div class="item">
+																			<div class="pad15">
+																					                    	<img src="<?=$r['photo']?>" class="img-fluid">
+																					                        <p class="text-truncate"><?=$r['name']?></p>
+																					                        <p class="item-price">
 
-									                        	
-									                        		
-									                        <?php if($r['discount']) {?>
 
-									                        	<strike><?=$r['discount']?>&nbsp;Kyats</strike>
-									                        	<span class="d-block"><?=$r['price']?>&nbsp;Kyats</span>
-									                        <?php } else { ?>
-									                        	<span class="d-block"><?=$r['price']?>&nbsp;Kyats</span>
-									                        <?php } ?>
-									                        	
-									                        	
-									                        </p>
 
-									                        <div class="star-rating">
-																<ul class="list-inline">
-																	<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
-																	<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
-																	<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
-																	<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
-																	<li class="list-inline-item"><i class='bx bxs-star-half' ></i></li>
-																</ul>
-															</div>
+	<?php if ($r['discount']) {?>
 
-															<a href="#" class="addtocartBtn text-decoration-none">Add to Cart</a>
+																																	                        	<strike><?=$r['price']?>&nbsp;Kyats</strike>
+																																	                        	<span class="d-block"><?=$r['discount']?>&nbsp;Kyats</span>
+		<?php } else {?>
+																				<span class="d-block"><?=$r['price']?>&nbsp;Kyats</span>
+		<?php }?>
+			</p>
 
-									                    </div>
-									                </div>
+																					                        <div class="star-rating">
+																												<ul class="list-inline">
+																													<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+																													<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+																													<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+																													<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+																													<li class="list-inline-item"><i class='bx bxs-star-half' ></i></li>
+																												</ul>
+																											</div>
+
+																											<a href="javascript:void(0)" class="addtocartBtn text-decoration-none" data-id ="<?=$r['id']?>" data-name="<?=$r['name']?>"
+																																																		data-codeno="<?=$r['codeno']?>"
+																																																		data-photo="<?=$r['photo']?>"
+																																																		data-price="<?=$r['price']?>"
+																																																		data-discount="<?=$r['discount']?>">Add to Cart</a>
+
+																					                    </div>
+																					                </div>
 
 
 
@@ -199,9 +205,9 @@ foreach ($row as $r) {
 		            <div class="MultiCarousel-inner">
 
 
-		            	<?php 
+<?php
 
-		            	$sql  = "select * from items order by rand()";
+$sql  = "select * from items order by rand()";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $row = $stmt->fetchAll();
@@ -211,50 +217,46 @@ foreach ($row as $r) {
 
 
 
-<div class="item">
-		                    <div class="pad15">
-		                    	<img src="<?=$r['photo']?>" class="img-fluid">
-		                        <p class="text-truncate"><?=$r['name']?></p>
-		                        <p class="item-price">
-		                        	<?php if($r['discount']) {?>
+												<div class="item">
+														                    <div class="pad15">
+														                    	<img src="<?=$r['photo']?>" class="img-fluid">
+														                        <p class="text-truncate"><?=$r['name']?></p>
+														                        <p class="item-price">
+	<?php if ($r['discount']) {?>
 
-									                        	<strike><?=$r['discount']?>&nbsp;Kyats</strike>
-									                        	<span class="d-block"><?=$r['price']?>&nbsp;Kyats</span>
-									                        <?php } else { ?>
-									                        	<span class="d-block"><?=$r['price']?>&nbsp;Kyats</span>
-									                        <?php } ?>
-		                        </p>
+																																	                        	<strike><?=$r['price']?>&nbsp;Kyats</strike>
+																																	                        	<span class="d-block"><?=$r['discount']?>&nbsp;Kyats</span>
+		<?php } else {?>
+																																	                        	<span class="d-block"><?=$r['price']?>&nbsp;Kyats</span>
+		<?php }?>
+		</p>
 
-		                        <div class="star-rating">
-									<ul class="list-inline">
-										<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
-										<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
-										<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
-										<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
-										<li class="list-inline-item"><i class='bx bxs-star-half' ></i></li>
-									</ul>
-								</div>
+														                        <div class="star-rating">
+																					<ul class="list-inline">
+																						<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+																						<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+																						<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+																						<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+																						<li class="list-inline-item"><i class='bx bxs-star-half' ></i></li>
+																					</ul>
+																				</div>
 
-								<a href="#" class="addtocartBtn text-decoration-none">Add to Cart</a>
+																				<a href="javascript:void(0)" class="addtocartBtn text-decoration-none" data-id ="<?=$r['id']?>" data-name="<?=$r['name']?>"
+																																																	data-codeno="<?=$r['codeno']?>"
+																																																	data-photo="<?=$r['photo']?>"
+																																																	data-price="<?=$r['price']?>"
+																																																	data-discount="<?=$r['discount']?>">Add to Cart</a>
 
-		                    </div>
-		                </div>
+														                    </div>
+														                </div>
 
 
 	<?php
-	
+
 }
 
-
-		            	 ?>
-
-
-
-
-		                
-		                
-
-		            </div>
+?>
+</div>
 		            <button class="btn btnMain leftLst"><</button>
 		            <button class="btn btnMain rightLst">></button>
 		        </div>
@@ -272,7 +274,7 @@ foreach ($row as $r) {
 	    <!-- Brand Store Item -->
 	    <section class="customer-logos slider mt-5">
 
-	    	<?php 
+<?php
 
 $sql  = "select * from brands order by rand()";
 $stmt = $conn->prepare($sql);
@@ -282,23 +284,19 @@ foreach ($row as $r) {
 	?>
 
 
-<div class="slide">
-	      		<a href="">
-		      		<img src="<?=$r['photo']?>">
-		      	</a>
-	  </div>
+												<div class="slide">
+													      		<a href="">
+														      		<img src="<?=$r['photo']?>">
+														      	</a>
+													  </div>
 
 
 	<?php
-	
+
 }
 
-
-	    	 ?>
-	      	
-
-	      	
-	   	</section>
+?>
+</section>
 
 	    <div class="whitespace d-xl-block d-lg-block d-md-none d-sm-none d-none"></div>
 

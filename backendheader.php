@@ -95,7 +95,7 @@
             <ul class="app-menu">
 
                 <li>
-                    <a class="app-menu__item" href="dashboard.html">
+                    <a class="app-menu__item" href="backend/dashboard.html">
                         <i class="app-menu__icon icofont-dashboard"></i>
                         <span class="app-menu__label">
                             Dashboard

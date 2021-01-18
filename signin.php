@@ -48,8 +48,10 @@ if ($stmt->rowCount() <= 0) {
 
 } else {
 	#succsss
-	echo 'successfully';
-	$role = $row['rname'];
+	//echo 'successfully';
+	$_SESSION['login_user'] = $row;
+	$role                   = $row['rname'];
+
 	if ($role == "customer") {
 		header('location:index.php');
 	} else {

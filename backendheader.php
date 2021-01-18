@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,12 +52,7 @@
 
             <!-- Navbar Right Menu-->
             <ul class="app-nav">
-                <li class="app-search">
-                    <input class="app-search__input" type="search" placeholder="Search">
-                    <button class="app-search__button">
-                        <i class="icofont-search-2"></i>
-                    </button>
-                </li>
+
 
                 <!-- User Menu-->
                 <li class="dropdown">
@@ -64,13 +60,13 @@
                         <i class="icofont-user-alt-3"></i>
                 </a>
                   <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                    <li>
+                    <!-- <li>
                         <a class="dropdown-item" href="page-user.html">
                             <i class="icofont-ui-user"></i> Profile
                         </a>
-                    </li>
+                    </li> -->
                     <li>
-                        <a class="dropdown-item" href="page-login.html">
+                        <a class="dropdown-item" href="signout.php">
                             <i class="icofont-logout"></i>
                             Logout
                         </a>
@@ -87,8 +83,8 @@
         <aside class="app-sidebar">
             <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn4.iconfinder.com%2Fdata%2Ficons%2Fpeople-std-pack%2F512%2Fboss-512.png&f=1&nofb=1" alt="User Image" width="50px">
                 <div>
-                  <p class="app-sidebar__user-name">John Doe</p>
-                  <p class="app-sidebar__user-designation">Frontend Developer</p>
+                  <p class="app-sidebar__user-name"><?=$_SESSION['login_user']['name'];?></p>
+                  <p class="app-sidebar__user-designation"> <?=$_SESSION['login_user']['rname'];?></p>
                 </div>
             </div>
 

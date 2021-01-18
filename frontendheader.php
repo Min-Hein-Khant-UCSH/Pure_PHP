@@ -69,21 +69,52 @@ session_start();
 				<div class="row">
 					<div class="col-lg-8 col-2 ">
 						<div class="has-search d-xl-block d-lg-block d-none ">
-						    <div class="input-group">
+						   <!--  <div class="input-group">
 				                <input class="form-control pl-4 border-right-0 border" type="search" placeholder="Search" id="">
 				                <span class="input-group-append searchBtn">
 				                    <div class="input-group-text bg-transparent">
 				                    	<i class="icofont-search"></i>
 				                    </div>
 				                </span>
-				            </div>
+				            </div> -->
 						</div>
 					</div>
 					<div class="col-lg-4 col-10">
-						<a href="login.php" class="d-xl-block d-lg-block d-md-block d-none  text-decoration-none loginLink float-right"> Login | Sign-up </a>
+<?php if (isset($_SESSION['login_user'])) {?>
+	<a href="javascript:void(0)" class="d-xl-block d-lg-block d-md-block d-none  text-decoration-none loginLink float-right" data-toggle="dropdown" role="button">
+	<?=$_SESSION['login_user']['name'];?>
+	<i class="icofont-rounded-down"></i>
+																				</a>
+
+																				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+																				    <a class="dropdown-item" href="profile.php">
+																				    	Profile
+																				    </a>
+																				  	<div class="dropdown-divider"></div>
 
 
-					</div>
+																				    <a class="dropdown-item" href="order_history.php">
+																				    	Order History
+																				    </a>
+																				  	<div class="dropdown-divider"></div>
+
+																				  	<a class="dropdown-item" href="secret.php">
+																				    	Change Password
+																				    </a>
+																				  	<div class="dropdown-divider"></div>
+
+																				    <a class="dropdown-item" href="signout.php">
+																				    	Logout
+																				    </a>
+																				</div>
+
+
+
+	<?php } else {?>
+	<a href="login.php" class="d-xl-block d-lg-block d-md-block d-none  text-decoration-none loginLink float-right"> Login | Sign-up </a>
+
+	<?php }?>
+</div>
 				</div>
 			</div>
 
@@ -137,12 +168,12 @@ $row = $stmt->fetchAll();
 foreach ($row as $r) {
 	?>
 	<li class="dropdown-submenu">
-																											          		<a class="dropdown-item" href="javascript:void(0)">
+																																									          		<a class="dropdown-item" href="#">
 	<?=$r['name']?>
 	<i class="icofont-rounded-right float-right"></i>
-																											          		</a>
-																												            <ul class="dropdown-menu">
-																												            	<h6 class="dropdown-header">
+																																									          		</a>
+																																										            <ul class="dropdown-menu">
+																																										            	<h6 class="dropdown-header">
 
 	<?=$r['name']?>
 	</h6>
@@ -156,7 +187,7 @@ foreach ($row as $r) {
 
 	foreach ($rows as $r) {
 		?>
-																																																		<li><a class="dropdown-item" href="#"><?=$r['name']?></a></li>
+																																																																														<li><a class="dropdown-item" href="subcategory.php?id=<?=$r['id']?>"><?=$r['name']?></a></li>
 
 
 		<?php
@@ -164,8 +195,8 @@ foreach ($row as $r) {
 
 	?>
 	</ul>
-																											          	</li>
-																											          	<div class="dropdown-divider"></div>
+																																									          	</li>
+																																									          	<div class="dropdown-divider"></div>
 
 
 
@@ -185,7 +216,7 @@ foreach ($row as $r) {
 			</div>
 
 			<div class="col-3">
-				<a href="" class="text-decoration-none text-dark font-weight-bold"> Promotion </a>
+				<a href="promotion.php" class="text-decoration-none text-dark font-weight-bold"> Promotion </a>
 			</div>
 			<div class="col-3">
 				<div class="hov-dropdown d-inline-block">
@@ -207,8 +238,8 @@ foreach ($row as $r) {
 	?>
 
 
-													<a class="dropdown-item" href="#"><?=$r['name']?></a>
-													            			<div class="dropdown-divider"></div>
+																											<a class="dropdown-item" href="brand.php?id=<?=$r['id']?>"><?=$r['name']?></a>
+																											            			<div class="dropdown-divider"></div>
 
 	<?php
 
@@ -282,13 +313,13 @@ $stmt->execute();
 $row = $stmt->fetchAll();
 foreach ($row as $r) {
 	?>
-																	<a data-toggle="collapse" href="#category_<?=$r['id']?>" role="button" aria-expanded="false" aria-controls="category">
+																															<a data-toggle="collapse" href="#category_<?=$r['id']?>" role="button" aria-expanded="false" aria-controls="category">
 	<?=$r['name']?>
-																<i class="icofont-rounded-down float-right mr-3"></i>
+																														<i class="icofont-rounded-down float-right mr-3"></i>
 
-																				  	</a>
+																																		  	</a>
 
-																					<div class="collapse sidebardropdown_container_category mt-3" id="category_<?=$r['id']?>">
+																																			<div class="collapse sidebardropdown_container_category mt-3" id="category_<?=$r['id']?>">
 	<?php
 
 	$sql  = "select * from subcategories where category_id=?";
@@ -298,7 +329,7 @@ foreach ($row as $r) {
 	foreach ($rows as $r) {
 		?>
 
-																																		 <a href="" class="py-2"><?=$r['name']?></a>
+																																																														 <a href="" class="py-2"><?=$r['name']?></a>
 
 
 		<?php
@@ -311,7 +342,7 @@ foreach ($row as $r) {
 
 
 
-																					<hr>
+																																			<hr>
 
 
 	<?php
@@ -319,7 +350,7 @@ foreach ($row as $r) {
 }
 
 ?>
-<a href="#"> Poromotion </a>
+<a href="promotion.php"> Poromotion </a>
 			<hr>
 
 		  	<a data-toggle="collapse" href="#brand" role="button" aria-expanded="false" aria-controls="brand">
@@ -340,7 +371,7 @@ foreach ($row as $r) {
 
 	?>
 
-												 <a href="" class="py-2"> <?=$r['name']?></a>
+																										 <a href="brand.php?id=<?=$r['id']?>" class="py-2"> <?=$r['name']?></a>
 
 
 
@@ -364,8 +395,34 @@ foreach ($row as $r) {
 			</div>
 			<hr>
 
-			<a href="login.php"> Login | Signup</a>
-			<hr>
+
+
+
+
+<?php
+if (isset($_SESSION['login_user'])) {
+	?>
+	<a data-toggle="collapse" href="#account" role="button" aria-expanded="false" aria-controls="account">
+	<?=$_SESSION['login_user']['name']?>
+	<i class="icofont-rounded-down float-right mr-3"></i>
+															  	</a>
+
+																<div class="collapse sidebardropdown_container_category mt-3" id="account">
+																    <a href="profile.php" class="py-2"> Profile </a>
+																    <a href="order_history" class="py-2"> Order History </a>
+																    <a href="secret.php" class="py-2"> Change Password </a>
+																    <a href="signout.php" class="py-2"> Logout </a>
+																</div>
+																<hr>
+
+	<?php
+} else {
+	?>
+	<a href="login.php"> Login | Signup</a>
+																	<hr>
+
+	<?php }?>
+<hr>
 
 			<a href="shoppingcart.php"> Cart [ <span class="cartNoti"> 1 </span> ]  </a>
 			<hr>
@@ -379,6 +436,72 @@ foreach ($row as $r) {
 		</div>
 
 	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
